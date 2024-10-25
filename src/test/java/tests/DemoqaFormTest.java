@@ -28,6 +28,7 @@ public class DemoqaFormTest extends TestBase {
             state = "NCR",
             city = "Del";
 
+
     @Test
     @Tag("fullFormTest")
     @DisplayName("Проверка заполнения всех полей формы")
