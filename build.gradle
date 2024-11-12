@@ -6,15 +6,25 @@ plugins {
 group = 'org.example'
 version = '1.0-SNAPSHOT'
 
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
+def allureVersion = "2.19.0"
+
 allure {
     report {
-        version.set("2.19.0")
+        version.set(allureVersion)
     }
     adapter {
         aspectjWeaver.set true
         frameworks {
             junit5 {
-                adapterVersion.set("2.19.0")
+                adapterVersion.set(allureVersion)
             }
         }
     }
@@ -23,7 +33,6 @@ allure {
 repositories {
     mavenCentral()
 }
-
 
 dependencies {
     testImplementation(
@@ -37,6 +46,7 @@ dependencies {
 }
 
 tasks.withType(Test) {
+    systemProperties(System.getProperties())
     useJUnitPlatform()
 
     testLogging {
